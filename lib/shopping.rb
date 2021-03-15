@@ -1,9 +1,9 @@
-class Checkout
+class Transaction
 
-  def checkout(items)
-    edit = items.split(',')
+  def total(basket)
+    basket_items = basket.split(',')
     @cost = 0
-    calc(edit)
+    scanner(basket_items)
     if @cost > 75
       return "Total Price: $#{(@cost / 100 * 90).round(2)}"
     else
@@ -13,7 +13,7 @@ class Checkout
 
   private
 
-  def calc(items)
+  def scanner(items)
     items.each do |item|
       @cost += case item
       when '0001'
