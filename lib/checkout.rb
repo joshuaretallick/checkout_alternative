@@ -1,9 +1,14 @@
 class Checkout
 
   def checkout(items)
+    edit = items.split(',')
     @cost = 0
-    calc(items.to_s.chars)
-    @cost
+    calc(edit)
+    if @cost > 75
+      return "Total Price: $#{@cost / 100 * 90}"
+    else
+      return "Total Price: $#{@cost}"
+    end
   end
 
   private
@@ -11,12 +16,16 @@ class Checkout
   def calc(items)
     items.each do |item|
       @cost += case item
-      when '1'
-        50
-      when '2'
-        65
-      when '3'
-        3
+      when '0001'
+        if items.count('0001') > 1
+          22.99
+        else
+          24.95
+        end
+      when '0002'
+        65.00
+      when '0003'
+        3.99
       end
     end
   end
