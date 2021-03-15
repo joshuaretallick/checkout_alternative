@@ -14,7 +14,8 @@ class Transaction
 
   def scan_item(items)
     items.each do |product|
-      return @final_total += PRODUCT_LIST[product]
+      @final_total += PRODUCT_LIST[product]
+      return "#{product}: $#{PRODUCT_LIST[product]}, SUB-TOTAL: $#{@final_total.round(2)}"
     end
   end
 
