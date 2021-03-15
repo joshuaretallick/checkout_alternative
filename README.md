@@ -2,7 +2,7 @@
 We are working with a client who wants to launch an e-commerce site to promote their brand, below are some of the products that they will be listing:
 
 |ID | Name | Price|
-|____|______|_______|
+|----|------|-------|
 |0001 | Water Bottle | £24.95|
 |0002 | Hoodie | £65.00|
 |0003 | Sticker Set | £3.99|
