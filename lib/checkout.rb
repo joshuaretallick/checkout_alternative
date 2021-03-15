@@ -5,9 +5,9 @@ class Checkout
     @cost = 0
     calc(edit)
     if @cost > 75
-      return "Total Price: $#{@cost / 100 * 90}"
+      return "Total Price: $#{(@cost / 100 * 90).round(2)}"
     else
-      return "Total Price: $#{@cost}"
+      return "Total Price: $#{@cost.round(2)}"
     end
   end
 
@@ -29,5 +29,7 @@ class Checkout
       end
     end
   end
+
+
 
 end
