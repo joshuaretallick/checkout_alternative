@@ -14,7 +14,7 @@ class Transaction
 
   def scan_item(items)
     items.each do |product|
-      @final_total += PRODUCT_LIST[product]
+      return @final_total += PRODUCT_LIST[product]
     end
   end
 
