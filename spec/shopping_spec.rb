@@ -11,17 +11,20 @@ describe Transaction do
       expect(transaction.total).to eq 24.95
     end
 
-    # it 'adds 24.95 for a water bottle' do
-    #   expect(transaction.total('0001')).to eq 'Total Price: $24.95'
-    # end
-    #
-    # it 'adds 65.00 for a hoodie' do
-    #   expect(transaction.total('0002')).to eq 'Total Price: $65.0'
-    # end
-    #
-    # it 'adds 3.99 for a sticker set' do
-    #   expect(transaction.total('0003')).to eq 'Total Price: $3.99'
-    # end
+    it 'adds 24.95 for a water bottle' do
+      transaction.scan_item(['0001'])
+      expect(transaction.total).to eq 24.95
+    end
+
+    it 'adds 65.00 for a hoodie' do
+      transaction.scan_item(['0002'])
+      expect(transaction.total).to eq 65.00
+    end
+
+    it 'adds 3.99 for a sticker set' do
+      transaction.scan_item(['0003'])
+      expect(transaction.total).to eq 3.99
+    end
   end
 
   # context 'special_offer' do

@@ -1,6 +1,6 @@
 class Transaction
 
-  attr_reader :final_total
+  attr_reader :final_total, :current_transaction
 
   PRODUCT_LIST = {
     '0001'=>24.95, #water bottle
@@ -14,7 +14,6 @@ class Transaction
 
   def scan_item(items)
     items.each do |product|
-      p PRODUCT_LIST[product]
       @final_total += PRODUCT_LIST[product]
     end
   end
@@ -22,6 +21,7 @@ class Transaction
   def total
     @final_total
   end
+
 
   # def total(basket)
   #   basket_items = basket.split(',')
