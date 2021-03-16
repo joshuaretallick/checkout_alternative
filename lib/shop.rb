@@ -1,5 +1,5 @@
-require_relative './inventory.rb'
-require_relative './transaction.rb'
+require_relative 'inventory'
+require_relative 'transaction'
 
 class Shop
 
