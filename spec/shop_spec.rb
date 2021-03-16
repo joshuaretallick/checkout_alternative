@@ -15,4 +15,18 @@ describe Shop do
     expect(shop.inventory).to be_a_kind_of Inventory
   end
 
+  it "returns the total when called and under bulk discount threshold" do
+    shop.new_transaction
+    shop.scan_item('0001')
+    shop.scan_item('0001')
+    expect(shop.complete_transaction).to eq 49.90
+  end
+
+  it "applies a bulk discount if order is over 75" do
+    shop.new_transaction
+    shop.scan_item('0002')
+    shop.scan_item('0002')
+    expect(shop.complete_transaction).to eq 117
+  end
+
 end
