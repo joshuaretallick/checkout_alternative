@@ -17,4 +17,8 @@ class Shop
     @transaction.add(sku)
   end
 
+  def complete_transaction
+    @transaction.total
+  end
+
 end

@@ -12,12 +12,12 @@ class Transaction
 
   def add(item)
     transaction << item
-    total(item)
+    subtotal(item)
   end
 
   private
 
-  def total(item)
+  def subtotal(item)
     @total += inventory[item]
   end
 
