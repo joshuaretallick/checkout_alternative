@@ -1,28 +1,43 @@
+require_relative 'inventory'
+
 class Transaction
 
-  attr_reader :final_total, :product_list
-
-  PRODUCT_LIST = {
-    '0001'=>24.95, #water bottle
-    '0002'=>65.00, #hoodie
-    '0003'=>3.99 #sticker set
-  }
+  attr_reader :transaction, :inventory, :total
 
   def initialize
-    @final_total = 0
-    @product_list = PRODUCT_LIST
+    @transaction = []
+    @inventory = Inventory::INVENTORY
+    @total = 0
   end
 
-  def scan_item(items)
-    items.each do |product|
-      @final_total += PRODUCT_LIST[product]
-      return "#{product}: $#{PRODUCT_LIST[product]}, SUB-TOTAL: $#{@final_total.round(2)}"
-    end
+  def add(item)
+    transaction << item
+    total(item)
   end
 
-  def total
-    return "FINAL TOTAL: $#{@final_total.round(2)}"
+  private
+
+  def total(item)
+    @total += inventory[item]
   end
+
+  # attr_reader :final_total, :inventory
+  #
+  # def initialize
+  #   @final_total = 0
+  #   @inventory = Inventory::INVENTORY
+  # end
+  #
+  # def scan_item(items)
+  #   items.each do |product|
+  #     @final_total += PRODUCT_LIST[product]
+  #     return "#{product}: $#{PRODUCT_LIST[product]}, SUB-TOTAL: $#{@final_total.round(2)}"
+  #   end
+  # end
+  #
+  # def total
+  #   return "FINAL TOTAL: $#{@final_total.round(2)}"
+  # end
 
   # def total(basket)
   #   basket_items = basket.split(',')
