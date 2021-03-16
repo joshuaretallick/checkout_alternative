@@ -31,4 +31,11 @@ describe Transaction do
     expect(transaction.has_item?('0005')).to be false
   end
 
+  it "doesn't allow items to be added that are not in the inventory" do
+  allow(transaction).to receive(:has_item?).with('0001').and_return(true)
+  allow(transaction).to receive(:has_item?).with('0003').and_return(true)
+  allow(transaction).to receive(:has_item?).with('0005').and_return(false)
+  expect { transaction.add('0005') }.to raise_error "SKU is invalid!"
+end
+
 end

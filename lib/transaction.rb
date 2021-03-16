@@ -11,6 +11,7 @@ class Transaction
   end
 
   def add(item)
+    fail "SKU is invalid!" unless has_item?(item)
     transaction << item
     subtotal(item)
   end
