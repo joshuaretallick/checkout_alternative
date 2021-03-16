@@ -15,6 +15,10 @@ class Transaction
     subtotal(item)
   end
 
+  def has_item?(item)
+    !@inventory[item].nil?
+  end
+
   private
 
   def subtotal(item)
