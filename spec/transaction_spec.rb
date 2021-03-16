@@ -23,8 +23,12 @@ describe Transaction do
     expect(transaction.transaction).to eq new_transaction
   end
 
-  it "tells if a item is not in the inventory" do
+  it "tells if a item is in the inventory" do
     expect(transaction.has_item?('0001')).to be true
+  end
+
+  it "tells if a item is NOT in the inventory" do
+    expect(transaction.has_item?('0005')).to be false
   end
 
 end
