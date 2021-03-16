@@ -16,6 +16,10 @@ describe Transaction do
     expect(transaction).to respond_to(:add).with(1).argument
   end
 
+  it "adds the item to the @transaction" do
+    expect { transaction.add('0001') }.to change { transaction.transaction }.from([]).to(['0001'])
+  end
+
   it "adds several items to the transaction" do
     transaction.add('0001')
     transaction.add('0002')
