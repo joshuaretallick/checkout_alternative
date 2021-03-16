@@ -27,6 +27,11 @@ describe Transaction do
     expect(transaction.transaction).to eq new_transaction
   end
 
+  it 'add the cost of the item to @total' do
+    water_bottle_cost = 24.95
+    expect { transaction.add('0001') }.to change { transaction.total }.from(0).to(water_bottle_cost)
+  end
+
   it "tells if a item is in the inventory" do
     expect(transaction.has_item?('0001')).to be true
   end
