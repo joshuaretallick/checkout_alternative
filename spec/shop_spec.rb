@@ -17,9 +17,9 @@ describe Shop do
 
   it "returns the total when called and under bulk discount threshold" do
     shop.new_transaction
-    shop.scan_item('0001')
-    shop.scan_item('0001')
-    expect(shop.complete_transaction).to eq 49.90
+    shop.scan_item('0003')
+    shop.scan_item('0003')
+    expect(shop.complete_transaction).to eq 7.98
   end
 
   it "applies a bulk discount if order is over 75" do
@@ -27,6 +27,13 @@ describe Shop do
     shop.scan_item('0002')
     shop.scan_item('0002')
     expect(shop.complete_transaction).to eq 117
+  end
+
+  it "applies a discount if two bottles of water are added" do
+    shop.new_transaction
+    shop.scan_item('0001')
+    shop.scan_item('0001')
+    expect(shop.complete_transaction).to eq 45.98
   end
 
 end
