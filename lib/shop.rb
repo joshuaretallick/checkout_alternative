@@ -29,18 +29,18 @@ class Shop
   def apply_water_discount
     if @transaction.transaction.count('0001') > 1
       puts "MULTI-BUY WATER DISCOUNT APPLIED"
-      @final_total = @transaction.total - (@transaction.transaction.count('0001') * 1.96)
+      @final_total = (@transaction.total - (@transaction.transaction.count('0001') * 1.96)).round(2)
     else
-      @final_total = @transaction.total
+      @final_total = @transaction.total.round(2)
     end
   end
 
   def apply_bulk_discount
     if @final_total > 75
       puts "BULK DISCOUNT APPLIED"
-      return @final_total / 100 * 90
+      return (@final_total / 100 * 90).round(2)
     else
-      @final_total
+      @final_total.round(2)
     end
   end
 

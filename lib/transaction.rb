@@ -13,6 +13,7 @@ class Transaction
   def add(item)
     fail "SKU is invalid!" unless has_item?(item)
     transaction << item
+    name_item(item)
     subtotal(item)
   end
 
@@ -24,6 +25,17 @@ class Transaction
 
   def subtotal(item)
     @total += inventory[item]
+  end
+
+  def name_item(item)
+    case item
+    when '0001'
+      puts "Water Bottle added to cart"
+    when '0002'
+      puts "Hoodie added to cart"
+    when '0003'
+      puts "Sticker Set added to cart"
+    end
   end
 
 end
